@@ -1,0 +1,65 @@
+	import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Boardgame {
+
+	// Driver program to test above
+	public static void main(String[] args) throws IOException {
+		String commands[]=new String[5];
+		int positions[][]={{0,0},{0,1},{0,2},{0,3},{1,0},{1,1},{1,2},{1,3},{2,0},{2,1},{2,2},{2,3},{3,0},{3,1},{3,2},{3,3}};
+		String givenCommand = "";
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int x, y;
+
+		int countUp = 0, countDown = 0;
+		int countLeft = 0, countRight = 0;
+
+		System.out.println("Enter start point(x,y)");
+		String startpoint = br.readLine();
+
+		x = (int) startpoint.charAt(0)-48;
+		y = (int) startpoint.charAt(2)-48;
+
+		for (int i = 0; i < 5 ; ++i) {
+
+			System.out.println("Enter command:(LEFT/RIGHT/UP/DOWN)");
+			givenCommand = br.readLine();
+			commands[i] = givenCommand;
+
+		}
+
+		for (String command : commands) {
+			
+				switch (command) {
+				case "LEFT":
+					if(y>0)
+						y--;
+					
+					break;
+				case "RIGHT":
+					y++;
+						break;
+				case "UP":
+					if(x>0)
+						x--;
+					
+					break;
+				case "DOWN":
+					x++;
+					
+					break;
+				default:
+					System.out.println("Unknown move!!!");
+				}
+
+			
+			
+		}
+		System.out.println("Final Position: (" + (x) + ", " + y + ")");
+
+
+	}
+}
+
